@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Rental.Data.Models.Client>
+@using Rental.Web.Controllers;
 
 @{
     ViewData["Title"] = "Index";
@@ -22,7 +23,7 @@
                 @Html.DisplayNameFor(model => model.Surname)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BirthDate)
+                Age
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CountryCode)
@@ -34,28 +35,28 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var client in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                @Html.DisplayFor(modelItem => client.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => client.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Surname)
+                @Html.DisplayFor(modelItem => client.Surname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BirthDate)
+                @ClientController.GetAge(client.BirthDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CountryCode)
+                @Html.DisplayFor(modelItem => client.CountryCode)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsMale)
+                @Html.DisplayFor(modelItem => client.IsMale)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Edit", "Edit", new { id = client.Id }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>

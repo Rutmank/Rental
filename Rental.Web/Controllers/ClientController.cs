@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Rental.Data.Models;
 using Rental.Data.Repositories;
+using System;
 
 namespace Rental.Web.Controllers
 {
@@ -53,6 +54,16 @@ namespace Rental.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(client);
+        }
+
+        public static int? GetAge(DateTime? birhDate)
+        {
+            if (!birhDate.HasValue)
+            {
+                return null;
+            }
+
+            return (int)(DateTime.Now - birhDate.Value).TotalDays / 365;
         }
     }
 }
