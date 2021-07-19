@@ -56,6 +56,26 @@ namespace Rental.Web.Controllers
             return View(client);
         }
 
+        public IActionResult Delete(int id)
+        {
+            var repo = new ClientRepository();
+            var client = repo.Get(id);
+            return View(client);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Client client)
+        {
+            if (ModelState.IsValid)
+            {
+                var repo = new ClientRepository();
+                repo.Delete(client);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(client);
+        }
+
+
         public static int? GetAge(DateTime? birhDate)
         {
             if (!birhDate.HasValue)

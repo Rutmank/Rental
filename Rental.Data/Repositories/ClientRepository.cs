@@ -40,5 +40,14 @@ namespace Rental.Data.Repositories
                 db.SaveChanges();
             }
         }
+
+        public void Delete(Client client)
+        {
+            using (var db = new RentalDbContext())
+            {
+                db.Clients.Remove(client);
+                db.SaveChanges();
+            }
+        }
     }
 }
