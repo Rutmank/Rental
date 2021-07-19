@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Rental.Data.Models.Vehicle>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HorsePower)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var vehicle in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => vehicle.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => vehicle.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => vehicle.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => vehicle.HorsePower)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = vehicle.Id }) |
+                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                @Html.ActionLink("Delete", "Delete", new { id = vehicle.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
